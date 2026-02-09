@@ -1,0 +1,14 @@
+# AMRIT AI - Complete Autonomous System
+# Python Dependencies
+
+# Cryptography for military-grade encryption
+cryptography>=41.0.0
+
+# Flask for web server capabilities (offline)
+flask>=2.3.0
+flask-cors>=4.0.0
+
+# For future enhancements (optional)
+# numpy>=1.24.0  # For numerical computations
+# scipy>=1.10.0  # For scientific computing
+# pillow>=10.0.0  # For image processing in design generation
