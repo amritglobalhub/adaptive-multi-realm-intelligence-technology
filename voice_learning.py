@@ -8,6 +8,7 @@ from datetime import datetime
 from typing import Dict, List, Optional, Any
 import amrit_config as config
 from secure_storage import secure_storage
+from encryption_manager import encryption_manager
 
 
 class VoiceLearningSystem:
@@ -57,7 +58,7 @@ class VoiceLearningSystem:
         # 4. Update learning model
         
         sample_data = {
-            'audio_hash': secure_storage._encryption_manager.hash_data(str(audio_data)),
+            'audio_hash': encryption_manager.hash_data(str(audio_data)),
             'context': context,
             'timestamp': datetime.now().isoformat(),
             'phase': self.current_phase,
