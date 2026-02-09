@@ -1,42 +1,67 @@
-# Numerology Core System for Amrit Gupta
+"""
+Numerology Core System for Amrit Gupta
+LEGACY MODULE - Now using enhanced AMRIT AI numerology system
+
+This module is kept for backward compatibility.
+New code should use: backend.app.services.numerology
+"""
+import sys
+import os
+
+# Add project root to path
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+from backend.app.services.numerology import numerology_service
 
 # Constants
 BIRTH_DATE = '06/11/2000'
 BIRTH_TIME = '18:00'
 BIRTH_PLACE = 'New Delhi'
+FULL_NAME = 'Amrit Gupta'
 
-# Function to calculate Life Path Number
-
-def life_path_number(birth_date):
-    date_components = birth_date.split('/')
-    month = int(date_components[1])
-    day = int(date_components[0])
-    year = int(date_components[2])
-
-    total = month + day + year
-    while total > 9:
-        total = sum(int(digit) for digit in str(total))
-    return total
-
-# Function to interpret the Life Path Number
-
-def interpret_life_path_number(number):
-    interpretations = {
-        1: 'Leadership and independence',
-        2: 'Cooperation and diplomacy',
-        3: 'Creativity and self-expression',
-        4: 'Stability and order',
-        5: 'Freedom and adventure',
-        6: 'Nurturing and responsibility',
-        7: 'Spirituality and introspection',
-        8: 'Power and material success',
-        9: 'Compassion and humanitarianism'
-    }
-    return interpretations.get(number, 'Unknown')
-
-# Calculate and display results
-life_path_number_result = life_path_number(BIRTH_DATE)
-interpretation = interpret_life_path_number(life_path_number_result)
-
-print(f'Life Path Number for Amrit Gupta: {life_path_number_result}')
-print(f'Interpretation: {interpretation}')
+# Calculate using enhanced numerology service
+if __name__ == "__main__":
+    print("=" * 80)
+    print("AMRIT AI - Enhanced Numerology System")
+    print("=" * 80)
+    print()
+    
+    # Calculate all numbers
+    numbers = numerology_service.calculate_all_numbers(BIRTH_DATE, FULL_NAME)
+    
+    # Display all numbers
+    print(f"Master: {FULL_NAME}")
+    print(f"Birth Date: {BIRTH_DATE}")
+    print(f"Birth Time: {BIRTH_TIME}")
+    print(f"Birth Place: {BIRTH_PLACE}")
+    print()
+    
+    print("Complete Numerology Analysis:")
+    print(f"  • Life Path Number: {numbers['life_path']}")
+    print(f"    {numbers['interpretations']['life_path'].get('trait', 'N/A')}")
+    
+    print(f"  • Destiny Number: {numbers['destiny']}")
+    print(f"    {numbers['interpretations']['destiny'].get('trait', 'N/A')}")
+    
+    print(f"  • Soul Urge Number: {numbers['soul_urge']}")
+    print(f"  • Personality Number: {numbers['personality']}")
+    print(f"  • Maturity Number: {numbers['maturity']}")
+    print(f"  • Personal Year: {numbers['personal_year']}")
+    print(f"  • Personal Month: {numbers['personal_month']}")
+    print(f"  • Personal Day: {numbers['personal_day']}")
+    
+    print()
+    print("Daily Guidance:")
+    guidance = numerology_service.generate_daily_guidance(numbers)
+    print(f"  {guidance}")
+    
+    print()
+    print("Lucky Times:")
+    lucky = numerology_service.get_lucky_times(numbers)
+    print(f"  • Power Number: {lucky['power_number']}")
+    print(f"  • Lucky Hours: {', '.join(map(str, lucky['lucky_hours']))}")
+    
+    print()
+    print("=" * 80)
+    print("✨ For complete API access, run: python run_server.py")
+    print("=" * 80)
