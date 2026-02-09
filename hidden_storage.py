@@ -104,10 +104,17 @@ class HiddenStorageManager:
                 data_bytes = pickle.dumps(data)
             elif isinstance(data, dict):
                 data_bytes = json.dumps(data).encode('utf-8')
+            elif isinstance(data, (list, tuple)):
+                data_bytes = json.dumps(data).encode('utf-8')
             elif isinstance(data, str):
                 data_bytes = data.encode('utf-8')
-            else:
+            elif isinstance(data, bytes):
                 data_bytes = data
+            elif isinstance(data, (int, float, bool)):
+                data_bytes = json.dumps(data).encode('utf-8')
+            else:
+                # For any other type, use pickle
+                data_bytes = pickle.dumps(data)
             
             # Encrypt data
             encrypted_data, salt = self.encryption_manager.encrypt(data_bytes)
