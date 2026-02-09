@@ -1,0 +1,17 @@
+# AMRIT AI - iPhone Sync & Mobile Intelligence System
+# No external dependencies required
+# Uses Python standard library only
+
+# Python version: 3.6+
+# Standard library modules used:
+# - json
+# - hashlib
+# - time
+# - datetime
+# - typing
+
+# Optional dependencies for future enhancements:
+# speech_recognition>=3.10.0  # For actual voice recognition
+# pyttsx3>=2.90  # For text-to-speech
+# cryptography>=41.0.0  # For advanced encryption
+# pydub>=0.25.1  # For audio processing
